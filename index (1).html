@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deutsch Revision – Willkommen &amp; Kennenlernen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-dark:#1b4332;
+  --green:#2d6a4f;
+  --green-mid:#40916c;
+  --green-soft:#74c69d;
+  --green-pale:#d8f3dc;
+  --green-paler:#f1faf3;
+  --yellow:#ffc300;
+  --yellow-soft:#fff3b0;
+  --ink:#1b3a2f;
+  --grey:#6b7d74;
+  --red:#e5533d;
+  --shadow:0 10px 24px rgba(27,67,50,.16);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Nunito',sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 8% 6%, #eafff1 0%, transparent 45%),
+    radial-gradient(circle at 95% 18%, #fff9e0 0%, transparent 40%),
+    linear-gradient(180deg,#f6fdf8 0%, #eef9f1 100%);
+  min-height:100vh;
+}
+
+/* ---------------- header ---------------- */
+header.top{
+  position:sticky; top:0; z-index:20;
+  background:linear-gradient(120deg,var(--green-dark) 0%, var(--green) 60%, var(--green-mid) 100%);
+  color:#fff;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 4px 18px rgba(0,0,0,.15);
+  flex-wrap:wrap;
+  gap:10px;
+}
+header.top .brand{
+  display:flex; align-items:center; gap:10px;
+  cursor:pointer;
+  user-select:none;
+}
+header.top .brand .owl{font-size:26px;}
+header.top .brand h1{
+  font-size:16px; margin:0; font-weight:900; letter-spacing:.2px;
+}
+header.top .brand .tag{
+  display:block; font-size:10.5px; font-weight:600; opacity:.85; margin-top:1px;
+}
+header.top .progresswrap{
+  display:flex; align-items:center; gap:10px;
+  background:rgba(255,255,255,.14);
+  padding:7px 14px;
+  border-radius:30px;
+}
+header.top .progresswrap .bar{
+  width:120px; height:9px; background:rgba(255,255,255,.28); border-radius:6px; overflow:hidden;
+}
+header.top .progresswrap .bar > div{
+  height:100%; background:var(--yellow); border-radius:6px;
+  transition:width .5s ease;
+}
+header.top .progresswrap .pct{font-size:12px; font-weight:800;}
+header.top .headerright{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+.lockbtn{
+  background:var(--yellow); color:var(--green-dark); border:none; border-radius:30px;
+  padding:9px 16px; font-weight:800; font-size:12.5px; cursor:pointer; font-family:'Nunito',sans-serif;
+  box-shadow:0 3px 0 #c99900;
+}
+.lockbtn:hover{background:#ffd23f;}
+.lockbtn:active{transform:translateY(2px); box-shadow:none;}
+
+/* ---------------- password modal ---------------- */
+.overlay{
+  position:fixed; inset:0; background:rgba(27,67,50,.55);
+  display:flex; align-items:center; justify-content:center;
+  z-index:100; padding:20px;
+}
+.pw-modal{
+  background:#fff; border-radius:22px; padding:30px 28px; max-width:360px; width:100%;
+  text-align:center; box-shadow:0 20px 50px rgba(0,0,0,.3);
+}
+.pw-icon{font-size:38px; margin-bottom:6px;}
+.pw-modal h3{margin:0 0 6px 0; color:var(--green-dark); font-size:18px; font-weight:900;}
+.pw-modal p{margin:0 0 16px 0; color:var(--grey); font-size:12.5px; font-weight:600; line-height:1.4;}
+.pw-modal input{
+  width:100%; border:2px solid var(--green-pale); border-radius:12px; padding:12px 14px;
+  font-family:'Nunito',sans-serif; font-size:15px; font-weight:700; text-align:center;
+  outline:none; margin-bottom:8px;
+}
+.pw-modal input:focus{border-color:var(--green-mid);}
+.pw-error{color:var(--red); font-weight:800; font-size:12.5px; min-height:18px;}
+.pw-actions{display:flex; gap:10px; justify-content:center; margin-top:10px;}
+
+/* ---------------- corrige view ---------------- */
+#corrige-view{display:none;}
+.corrige-head{
+  display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; flex-wrap:wrap; gap:10px;
+}
+.corrige-head .titles h2{margin:0; color:var(--green-dark); font-size:20px; font-weight:900;}
+.corrige-head .titles p{margin:2px 0 0 0; color:var(--grey); font-weight:700; font-size:12px;}
+.corrige-actions{display:flex; gap:10px;}
+.corrige-block{
+  background:#fff; border-radius:18px; padding:18px 20px; margin-bottom:14px; box-shadow:var(--shadow);
+}
+.corrige-block h4{
+  margin:0 0 10px 0; color:#fff; background:var(--green); display:inline-block;
+  padding:4px 14px; border-radius:10px; font-size:13.5px; font-weight:800;
+}
+.corrige-block .qa{
+  display:flex; justify-content:space-between; gap:14px; padding:6px 0;
+  border-bottom:1px dashed var(--green-pale); font-size:13px; font-weight:700;
+}
+.corrige-block .qa:last-child{border-bottom:none;}
+.corrige-block .qa .q{color:var(--ink);}
+.corrige-block .qa .a{color:var(--green-mid); text-align:right; white-space:nowrap;}
+.corrige-block .pairsline{font-size:13px; font-weight:700; color:var(--ink); line-height:1.9;}
+.corrige-block .pairsline b{color:var(--green-mid);}
+
+@media print{
+  header.top, .corrige-actions, footer{display:none !important;}
+  body{background:#fff;}
+  .corrige-block{box-shadow:none; border:1px solid #ccc;}
+}
+
+main{max-width:980px; margin:0 auto; padding:26px 18px 60px;}
+
+/* ---------------- home grid ---------------- */
+.hero{
+  text-align:center; margin-bottom:26px;
+}
+.hero h2{
+  font-size:26px; margin:0 0 4px 0; color:var(--green-dark); font-weight:900;
+}
+.hero p{margin:0; color:var(--grey); font-weight:600; font-size:14px;}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(210px,1fr));
+  gap:16px;
+}
+.card{
+  background:#fff;
+  border-radius:20px;
+  padding:18px 16px;
+  box-shadow:var(--shadow);
+  border:2px solid transparent;
+  cursor:pointer;
+  transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+  position:relative;
+  overflow:hidden;
+}
+.card:hover{
+  transform:translateY(-5px) scale(1.015);
+  border-color:var(--green-soft);
+}
+.card .num{
+  position:absolute; top:-10px; right:-6px;
+  font-size:64px; font-weight:900; color:var(--green-pale);
+  z-index:0; line-height:1;
+}
+.card .icon{font-size:30px; display:block; margin-bottom:8px;}
+.card h3{margin:0 0 2px 0; font-size:15.5px; color:var(--green-dark); font-weight:800; position:relative;}
+.card p{margin:0 0 12px 0; font-size:11.5px; color:var(--grey); font-weight:600; position:relative;}
+.card .stars{font-size:14px; letter-spacing:2px; position:relative;}
+.card .stars .off{opacity:.25;}
+.card .status{
+  font-size:10.5px; font-weight:800; text-transform:uppercase; letter-spacing:.4px;
+  color:var(--green-mid); position:relative;
+}
+
+/* ---------------- exercise view ---------------- */
+#exercise-view{display:none;}
+.ex-top{
+  display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; gap:10px; flex-wrap:wrap;
+}
+.backbtn{
+  background:#fff; border:2px solid var(--green-soft); color:var(--green-dark);
+  font-weight:800; font-size:13px; padding:8px 16px; border-radius:30px; cursor:pointer;
+}
+.backbtn:hover{background:var(--green-pale);}
+.ex-title{
+  display:flex; align-items:center; gap:10px;
+}
+.ex-title .icon{font-size:24px;}
+.ex-title h2{margin:0; font-size:18px; color:var(--green-dark); font-weight:900;}
+.qcounter{font-size:12px; font-weight:800; color:var(--grey); background:#fff; border-radius:20px; padding:5px 12px; box-shadow:var(--shadow);}
+
+.progressline{height:8px; background:var(--green-pale); border-radius:5px; overflow:hidden; margin-bottom:20px;}
+.progressline > div{height:100%; background:var(--yellow); border-radius:5px; transition:width .4s ease;}
+
+.panel{
+  background:#fff; border-radius:22px; padding:28px 26px; box-shadow:var(--shadow);
+  min-height:220px;
+}
+
+.mascot-row{
+  display:flex; align-items:flex-start; gap:12px; margin-bottom:18px;
+}
+.mascot-row .owl{font-size:34px; flex-shrink:0;}
+.bubble{
+  background:var(--green-paler);
+  border:2px solid var(--green-pale);
+  border-radius:16px 16px 16px 4px;
+  padding:8px 14px;
+  font-weight:700;
+  font-size:13.5px;
+  color:var(--green-dark);
+}
+
+.qtext{font-size:18px; font-weight:800; color:var(--ink); margin-bottom:18px; line-height:1.4;}
+.qtext .hint{display:block; font-size:12px; font-weight:600; color:var(--grey); margin-top:4px;}
+
+/* MCQ options */
+.options{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px;}
+.opt{
+  border:2px solid var(--green-pale); background:#fbfffc; border-radius:14px;
+  padding:12px 14px; font-weight:700; font-size:14px; cursor:pointer; text-align:left;
+  transition:all .12s ease;
+}
+.opt:hover{border-color:var(--green-soft); background:var(--green-paler);}
+.opt.correct{background:var(--green-pale); border-color:var(--green-mid); color:var(--green-dark);}
+.opt.wrong{background:#fde3de; border-color:var(--red); color:#9c2c1c;}
+.opt[disabled]{cursor:default;}
+
+/* type-in */
+.typewrap{display:flex; gap:10px; flex-wrap:wrap; align-items:center;}
+.typewrap input{
+  flex:1; min-width:180px;
+  border:2px solid var(--green-pale); border-radius:12px; padding:12px 14px;
+  font-family:'Nunito',sans-serif; font-size:15px; font-weight:700; color:var(--ink);
+  outline:none;
+}
+.typewrap input:focus{border-color:var(--green-mid);}
+.typewrap input.correct{border-color:var(--green-mid); background:var(--green-paler);}
+.typewrap input.wrong{border-color:var(--red); background:#fff4f2;}
+.btn{
+  background:var(--green); color:#fff; border:none; border-radius:12px;
+  padding:12px 20px; font-weight:800; font-size:14px; cursor:pointer; font-family:'Nunito',sans-serif;
+  transition:background .15s ease, transform .1s ease;
+}
+.btn:hover{background:var(--green-dark);}
+.btn:active{transform:scale(.97);}
+.btn.secondary{background:#fff; color:var(--green-dark); border:2px solid var(--green-soft);}
+.btn.secondary:hover{background:var(--green-pale);}
+.btn.yellow{background:var(--yellow); color:var(--green-dark);}
+.btn.yellow:hover{background:#e6af00;}
+.btn[disabled]{opacity:.45; cursor:default;}
+
+.feedback{margin-top:14px; font-weight:800; font-size:13.5px; min-height:20px;}
+.feedback.ok{color:var(--green-mid);}
+.feedback.ko{color:var(--red);}
+
+.controls{display:flex; justify-content:flex-end; margin-top:20px; gap:10px;}
+
+/* matching game */
+.matchgrid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+.matchcol .mitem{
+  border:2px solid var(--green-pale); background:#fbfffc; border-radius:12px;
+  padding:10px 12px; font-weight:700; font-size:13.5px; margin-bottom:8px; cursor:pointer;
+  transition:all .12s ease;
+}
+.matchcol .mitem:hover{border-color:var(--green-soft);}
+.matchcol .mitem.selected{border-color:var(--yellow); background:var(--yellow-soft);}
+.matchcol .mitem.matched{border-color:var(--green-mid); background:var(--green-pale); color:var(--green-dark); cursor:default; opacity:.65;}
+.matchcol .mitem.shake{border-color:var(--red); background:#fde3de;}
+.matchmeta{font-size:12.5px; font-weight:700; color:var(--grey); margin-bottom:12px;}
+
+/* recap screen */
+.recap{text-align:center; padding:20px 10px;}
+.recap .bigowl{font-size:56px;}
+.recap h3{font-size:22px; color:var(--green-dark); margin:6px 0 4px;}
+.recap .starsbig{font-size:34px; letter-spacing:6px; margin:10px 0;}
+.recap .starsbig .off{opacity:.25;}
+.recap p{color:var(--grey); font-weight:700; font-size:14px;}
+.recap .actions{display:flex; gap:12px; justify-content:center; margin-top:18px; flex-wrap:wrap;}
+
+footer{
+  text-align:center; padding:22px; font-size:11.5px; color:var(--grey); font-weight:600;
+}
+
+@media (max-width:560px){
+  .matchgrid{gap:12px;}
+  .panel{padding:20px 16px;}
+  header.top .progresswrap .bar{width:80px;}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand" onclick="goHome()">
+    <span class="owl">🦉</span>
+    <div>
+      <h1>Deutsch Revision</h1>
+      <span class="tag">Willkommen – Kennenlernen · 10CO</span>
+    </div>
+  </div>
+  <div class="headerright">
+    <div class="progresswrap">
+      <div class="bar"><div id="global-bar" style="width:0%"></div></div>
+      <span class="pct" id="global-pct">0%</span>
+    </div>
+    <button class="lockbtn" onclick="openCorrigeGate()">🔒 Corrigé</button>
+  </div>
+</header>
+
+<!-- ============ MODAL MOT DE PASSE ============ -->
+<div id="pw-overlay" class="overlay" style="display:none;">
+  <div class="pw-modal">
+    <div class="pw-icon">🔐</div>
+    <h3>Corrigé enseignant·e</h3>
+    <p>Cette section est réservée à l'enseignant·e. Entre le mot de passe pour y accéder.</p>
+    <input type="password" id="pw-input" placeholder="Mot de passe" autocomplete="off" />
+    <div class="pw-error" id="pw-error"></div>
+    <div class="pw-actions">
+      <button class="btn secondary" onclick="closeCorrigeGate()">Annuler</button>
+      <button class="btn" onclick="checkPassword()">Déverrouiller</button>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ============ HOME VIEW ============ -->
+  <section id="home-view">
+    <div class="hero">
+      <h2>Wähl ein Thema! 🎯</h2>
+      <p>Choisis un thème et entraîne-toi en t'amusant — l'Eule te guide à chaque étape !</p>
+    </div>
+    <div class="grid" id="theme-grid"></div>
+  </section>
+
+  <!-- ============ EXERCISE VIEW ============ -->
+  <section id="exercise-view">
+    <div class="ex-top">
+      <button class="backbtn" onclick="goHome()">← Accueil</button>
+      <div class="ex-title">
+        <span class="icon" id="ex-icon"></span>
+        <h2 id="ex-heading"></h2>
+      </div>
+      <span class="qcounter" id="ex-counter"></span>
+    </div>
+    <div class="progressline"><div id="ex-progress" style="width:0%"></div></div>
+    <div class="panel" id="ex-panel"></div>
+  </section>
+
+  <!-- ============ CORRIGÉ VIEW (protégé) ============ -->
+  <section id="corrige-view">
+    <div class="corrige-head">
+      <div class="titles">
+        <h2>🔑 Corrigé complet</h2>
+        <p>Réservé à l'enseignant·e — toutes les réponses des 10 thèmes</p>
+      </div>
+      <div class="corrige-actions">
+        <button class="btn secondary" onclick="window.print()">🖨️ Imprimer</button>
+        <button class="btn secondary" onclick="lockCorrige()">🔒 Verrouiller</button>
+        <button class="backbtn" onclick="goHome()">← Accueil</button>
+      </div>
+    </div>
+    <div id="corrige-content"></div>
+  </section>
+
+</main>
+
+<footer>Créé pour la 10CO · geni@l klick, Stufe 1 · Viel Erfolg! ✨</footer>
+
+<script>
+/* ============================================================
+   DONNÉES DES THÈMES
+============================================================ */
+const THEMES = [
+{
+  id:'wwoerter', num:1, icon:'❓', title:'Die W-Wörter', subtitle:'Les mots interrogatifs',
+  type:'match',
+  pairs:[
+    ['wer','qui (nominatif)'],['für wen','pour qui (accusatif)'],['mit wem','avec qui (datif)'],
+    ['warum','pourquoi'],['wie viel(e)','combien (de)'],['wie alt','quel âge'],['wann','quand'],
+    ['welch...','quel'],['um wie viel Uhr','à quelle heure'],['wie','comment'],
+    ['was',"quoi, qu'est-ce que"],['wo','où (sans déplacement)'],['wohin','où (avec déplacement)'],
+    ['woher',"d'où (provenance)"]
+  ]
+},
+{
+  id:'uhrzeit', num:2, icon:'🕐', title:'Die Uhrzeit', subtitle:"L'heure",
+  type:'mcq',
+  questions:[
+    {q:'Viertel nach drei', options:['15h15','15h45','14h15'], answer:'15h15'},
+    {q:'halb sechs', options:['17h30','18h30','17h00'], answer:'17h30'},
+    {q:'zehn vor acht', options:['20h10','19h50','19h10'], answer:'19h50'},
+    {q:'fünf nach eins', options:['13h05','12h55','13h55'], answer:'13h05'},
+    {q:'Viertel vor zwölf', options:['12h15','11h15','11h45'], answer:'11h45'},
+    {q:'zwanzig nach neun', options:['9h40','9h20','8h40'], answer:'9h20'},
+    {q:'zehn Uhr', options:['10h10','9h50','10h00'], answer:'10h00'},
+    {q:'halb neun', options:['9h30','8h15','8h30'], answer:'8h30'}
+  ]
+},
+{
+  id:'hilfsverben', num:3, icon:'🔑', title:'Die Hilfsverben', subtitle:'sein & haben — Präsens',
+  type:'type',
+  questions:[
+    {q:'sein — ich ____', answer:['bin']},
+    {q:'sein — du ____', answer:['bist']},
+    {q:'sein — wir ____', answer:['sind']},
+    {q:'haben — er ____', answer:['hat']},
+    {q:'haben — ihr ____', answer:['habt']},
+    {q:'sein — sie (elles) ____', answer:['sind']},
+    {q:'haben — ich ____', answer:['habe']},
+    {q:'sein — er ____', answer:['ist']}
+  ]
+},
+{
+  id:'zahlen', num:4, icon:'🔢', title:'Die Zahlen', subtitle:'Les chiffres',
+  type:'type',
+  questions:[
+    {q:'17 → écris en lettres', answer:['siebzehn']},
+    {q:'vierundzwanzig → écris en chiffres', answer:['24']},
+    {q:'zweiundneunzig → écris en chiffres', answer:['92']},
+    {q:'60 → écris en lettres', answer:['sechzig']},
+    {q:'zehn + fünfzehn = ? (en lettres)', answer:['fünfundzwanzig']},
+    {q:'hundert − fünfzig = ? (en lettres)', answer:['fünfzig']},
+    {q:'88 → écris en lettres', answer:['achtundachtzig']},
+    {q:'45 → écris en lettres', answer:['fünfundvierzig']}
+  ]
+},
+{
+  id:'praesens', num:5, icon:'⚙️', title:'Präsens der Verben', subtitle:'Verbes réguliers & irréguliers',
+  type:'type',
+  questions:[
+    {q:'sprechen — du ____', answer:['sprichst']},
+    {q:'fahren — er ____', answer:['fährt']},
+    {q:'essen — du ____', answer:['isst']},
+    {q:'nehmen — er ____', answer:['nimmt']},
+    {q:'lesen — ich ____', answer:['lese']},
+    {q:'sehen — du ____', answer:['siehst']},
+    {q:'wohnen — wir ____', answer:['wohnen']},
+    {q:'arbeiten — du ____', answer:['arbeitest']}
+  ]
+},
+{
+  id:'modalverben', num:6, icon:'💪', title:'Die Modalverben', subtitle:'Les verbes de modalité',
+  type:'type',
+  questions:[
+    {q:'können — ich ____', answer:['kann']},
+    {q:'müssen — du ____', answer:['musst']},
+    {q:'wollen — wir ____', answer:['wollen']},
+    {q:'dürfen — er ____', answer:['darf']},
+    {q:'können — ihr ____', answer:['könnt']},
+    {q:'müssen — er ____', answer:['muss']},
+    {q:'wollen — du ____', answer:['willst']},
+    {q:'dürfen — ich ____', answer:['darf']}
+  ]
+},
+{
+  id:'zeitangaben', num:7, icon:'📆', title:'Zeitangaben', subtitle:'im / am / um',
+  type:'mcq',
+  questions:[
+    {q:'___ Winter fahre ich Ski.', options:['im','am','um'], answer:'im'},
+    {q:'___ Montag habe ich Deutsch.', options:['im','am','um'], answer:'am'},
+    {q:'___ acht Uhr beginnt die Schule.', options:['im','am','um'], answer:'um'},
+    {q:'Meine Party ist ___ September.', options:['im','am','um'], answer:'im'},
+    {q:'___ Wochenende schlafe ich lange.', options:['im','am','um'], answer:'am'},
+    {q:'Wir essen ___ halb zwölf.', options:['im','am','um'], answer:'um'},
+    {q:'___ Samstag gehe ich schwimmen.', options:['im','am','um'], answer:'am'},
+    {q:'___ Frühling blühen die Blumen.', options:['im','am','um'], answer:'im'}
+  ]
+},
+{
+  id:'ortsangaben', num:8, icon:'🧭', title:'Ortsangaben', subtitle:'wohin ? + moyens de transport',
+  type:'mcq',
+  questions:[
+    {q:'Ich fahre ___ Italien.', options:['nach','in die','ans'], answer:'nach'},
+    {q:'Wir fahren ___ Schweiz.', options:['nach','in die','ans'], answer:'in die'},
+    {q:'Sie fährt ___ Alpen.', options:['nach','in die','ans'], answer:'in die'},
+    {q:'Er fährt ___ Meer.', options:['nach','ans','in die'], answer:'ans'},
+    {q:'Ich fliege ___ Deutschland.', options:['nach','in die','ans'], answer:'nach'},
+    {q:'mit ___ Zug (der Zug)', options:['dem','der','das'], answer:'dem'},
+    {q:'mit ___ U-Bahn (die U-Bahn)', options:['dem','der','das'], answer:'der'},
+    {q:'mit ___ Fahrrad (das Fahrrad)', options:['dem','der','das'], answer:'dem'}
+  ]
+},
+{
+  id:'praeteritum', num:9, icon:'⏳', title:'Präteritum', subtitle:"L'imparfait — sein & haben",
+  type:'type',
+  questions:[
+    {q:'sein — ich ____', answer:['war']},
+    {q:'sein — du ____', answer:['warst']},
+    {q:'sein — wir ____', answer:['waren']},
+    {q:'haben — er ____', answer:['hatte']},
+    {q:'haben — ihr ____', answer:['hattet']},
+    {q:'sein — sie (elles) ____', answer:['waren']},
+    {q:'haben — ich ____', answer:['hatte']},
+    {q:'sein — er ____', answer:['war']}
+  ]
+},
+{
+  id:'perfekt', num:10, icon:'🏆', title:'Das Perfekt', subtitle:'Le passé composé',
+  type:'mcq',
+  questions:[
+    {q:'Ich kaufe ein neues Handy.', options:['Ich habe ein neues Handy gekauft.','Ich bin ein neues Handy gekauft.','Ich habe ein neues Handy kaufen.'], answer:'Ich habe ein neues Handy gekauft.'},
+    {q:'Wir sehen einen tollen Film.', options:['Wir haben einen tollen Film gesehen.','Wir sind einen tollen Film gesehen.','Wir haben einen tollen Film geseht.'], answer:'Wir haben einen tollen Film gesehen.'},
+    {q:'Sie fährt mit dem Zug nach Zürich.', options:['Sie hat mit dem Zug nach Zürich gefahren.','Sie ist mit dem Zug nach Zürich gefahren.','Sie ist mit dem Zug nach Zürich gefährt.'], answer:'Sie ist mit dem Zug nach Zürich gefahren.'},
+    {q:'Er hört gern Musik.', options:['Er hat gern Musik gehört.','Er ist gern Musik gehört.','Er hat gern Musik gehören.'], answer:'Er hat gern Musik gehört.'},
+    {q:'Ich bleibe zu Hause.', options:['Ich habe zu Hause geblieben.','Ich bin zu Hause geblieben.','Ich bin zu Hause bleibt.'], answer:'Ich bin zu Hause geblieben.'},
+    {q:'Du telefonierst mit deiner Freundin.', options:['Du hast mit deiner Freundin telefoniert.','Du bist mit deiner Freundin telefoniert.','Du hast mit deiner Freundin getelefoniert.'], answer:'Du hast mit deiner Freundin telefoniert.'},
+    {q:'Wir spielen Fussball.', options:['Wir haben Fussball gespielt.','Wir sind Fussball gespielt.','Wir haben Fussball spielt.'], answer:'Wir haben Fussball gespielt.'},
+    {q:'Sie besucht ihre Grossmutter.', options:['Sie hat ihre Grossmutter besucht.','Sie ist ihre Grossmutter besucht.','Sie hat ihre Grossmutter gebesucht.'], answer:'Sie hat ihre Grossmutter besucht.'}
+  ]
+}
+];
+
+const MASCOT_START = ["Los geht's! 💪", "Bereit? Auf geht's!", "Ich glaube an dich!", "Zeig mir, was du kannst!"];
+const MASCOT_OK = ["Super! 🎉", "Genau richtig!", "Klasse gemacht!", "Perfekt! ✨", "Toll!"];
+const MASCOT_KO = ["Fast! Versuch's nochmal.", "Nicht ganz — schau genau hin.", "Kein Problem, weiter geht's!", "Fast geschafft!"];
+
+/* ============================================================
+   ÉTAT & PERSISTENCE
+============================================================ */
+const STORAGE_KEY = 'revision-deutsch-willkommen-progress';
+function loadProgress(){
+  try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }catch(e){ return {}; }
+}
+function saveProgress(p){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(p));
+}
+let progress = loadProgress();
+
+let state = null; // current exercise runtime state
+
+/* ============================================================
+   HOME VIEW
+============================================================ */
+function starString(stars){
+  let s = '';
+  for(let i=0;i<3;i++){ s += i < stars ? '⭐' : '<span class="off">☆</span>'; }
+  return s;
+}
+
+function renderHome(){
+  const grid = document.getElementById('theme-grid');
+  grid.innerHTML = '';
+  let totalStars = 0;
+  THEMES.forEach(t=>{
+    const best = progress[t.id];
+    const stars = best ? best.stars : 0;
+    totalStars += stars;
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.onclick = ()=>openTheme(t.id);
+    card.innerHTML = `
+      <span class="num">${t.num}</span>
+      <span class="icon">${t.icon}</span>
+      <h3>${t.title}</h3>
+      <p>${t.subtitle}</p>
+      <div class="stars">${starString(stars)}</div>
+      <div class="status">${best ? 'Rejouer' : 'Commencer'}</div>
+    `;
+    grid.appendChild(card);
+  });
+  const pct = Math.round((totalStars / (THEMES.length*3))*100);
+  document.getElementById('global-bar').style.width = pct+'%';
+  document.getElementById('global-pct').textContent = pct+'%';
+}
+
+function goHome(){
+  document.getElementById('exercise-view').style.display='none';
+  document.getElementById('corrige-view').style.display='none';
+  document.getElementById('home-view').style.display='block';
+  renderHome();
+}
+
+/* ============================================================
+   EXERCISE ENGINE
+============================================================ */
+function openTheme(id){
+  const theme = THEMES.find(t=>t.id===id);
+  document.getElementById('home-view').style.display='none';
+  document.getElementById('corrige-view').style.display='none';
+  document.getElementById('exercise-view').style.display='block';
+  document.getElementById('ex-icon').textContent = theme.icon;
+  document.getElementById('ex-heading').textContent = theme.title;
+
+  if(theme.type==='match'){
+    startMatch(theme);
+  } else {
+    startQuiz(theme);
+  }
+}
+
+function pickMascot(list){ return list[Math.floor(Math.random()*list.length)]; }
+
+function updateProgressBar(current,total){
+  document.getElementById('ex-progress').style.width = Math.round((current/total)*100)+'%';
+  document.getElementById('ex-counter').textContent = current+' / '+total;
+}
+
+/* ---------- QCM & TYPE-IN ---------- */
+function startQuiz(theme){
+  state = { theme, index:0, correctCount:0, total: theme.questions.length, mistakes:0 };
+  renderQuizQuestion();
+}
+
+function normalize(str){
+  return str.trim().toLowerCase().replace(/\s+/g,' ');
+}
+
+function renderQuizQuestion(){
+  const {theme, index, total} = state;
+  updateProgressBar(index, total);
+  const q = theme.questions[index];
+  const panel = document.getElementById('ex-panel');
+
+  let bodyHtml = '';
+  if(theme.type==='mcq'){
+    bodyHtml = `
+      <div class="qtext">${q.q}</div>
+      <div class="options" id="opts"></div>
+    `;
+  } else {
+    bodyHtml = `
+      <div class="qtext">${q.q}</div>
+      <div class="typewrap">
+        <input type="text" id="typein" autocomplete="off" placeholder="Écris ta réponse ici..." />
+        <button class="btn" id="validate-btn">Valider</button>
+      </div>
+    `;
+  }
+
+  panel.innerHTML = `
+    <div class="mascot-row">
+      <span class="owl">🦉</span>
+      <div class="bubble" id="mascot-bubble">${index===0 ? pickMascot(MASCOT_START) : ''}</div>
+    </div>
+    ${bodyHtml}
+    <div class="feedback" id="feedback"></div>
+    <div class="controls">
+      <button class="btn secondary" id="next-btn" disabled>Suivant →</button>
+    </div>
+  `;
+
+  if(theme.type==='mcq'){
+    const optsDiv = document.getElementById('opts');
+    // shuffle options for display
+    const shuffled = [...q.options].sort(()=>Math.random()-0.5);
+    shuffled.forEach(opt=>{
+      const b = document.createElement('button');
+      b.className = 'opt';
+      b.textContent = opt;
+      b.onclick = ()=>checkMCQ(opt, q.answer, b, optsDiv);
+      optsDiv.appendChild(b);
+    });
+  } else {
+    const input = document.getElementById('typein');
+    const btn = document.getElementById('validate-btn');
+    const submit = ()=>checkType(input, q.answer, btn);
+    btn.onclick = submit;
+    input.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); submit(); } });
+    setTimeout(()=>input.focus(), 50);
+  }
+}
+
+function checkMCQ(chosen, answer, btnEl, container){
+  if(state.answered) return;
+  state.answered = true;
+  const allBtns = container.querySelectorAll('.opt');
+  allBtns.forEach(b=>b.disabled=true);
+  const isCorrect = chosen===answer;
+  if(isCorrect){
+    btnEl.classList.add('correct');
+    state.correctCount++;
+  } else {
+    btnEl.classList.add('wrong');
+    state.mistakes++;
+    allBtns.forEach(b=>{ if(b.textContent===answer) b.classList.add('correct'); });
+  }
+  showFeedback(isCorrect);
+}
+
+function checkType(input, answers, btn){
+  if(state.answered) return;
+  const val = normalize(input.value);
+  const isCorrect = answers.some(a=>normalize(a)===val);
+  state.answered = true;
+  input.disabled = true;
+  btn.disabled = true;
+  if(isCorrect){
+    input.classList.add('correct');
+    state.correctCount++;
+  } else {
+    input.classList.add('wrong');
+    state.mistakes++;
+    input.value += '   (→ ' + answers[0] + ')';
+  }
+  showFeedback(isCorrect);
+}
+
+function showFeedback(isCorrect){
+  const fb = document.getElementById('feedback');
+  const bubble = document.getElementById('mascot-bubble');
+  fb.textContent = isCorrect ? 'Richtig !' : 'Nicht ganz...';
+  fb.className = 'feedback ' + (isCorrect?'ok':'ko');
+  bubble.textContent = isCorrect ? pickMascot(MASCOT_OK) : pickMascot(MASCOT_KO);
+  const nextBtn = document.getElementById('next-btn');
+  nextBtn.disabled = false;
+  nextBtn.onclick = advanceQuiz;
+  nextBtn.focus();
+}
+
+function advanceQuiz(){
+  state.index++;
+  state.answered = false;
+  if(state.index >= state.total){
+    showRecap();
+  } else {
+    renderQuizQuestion();
+  }
+}
+
+/* ---------- MATCHING GAME ---------- */
+function shuffle(arr){ return [...arr].sort(()=>Math.random()-0.5); }
+
+function startMatch(theme){
+  const chosenPairs = shuffle(theme.pairs).slice(0, Math.min(8, theme.pairs.length));
+  const left = chosenPairs.map((p,i)=>({id:i, text:p[0]}));
+  const right = chosenPairs.map((p,i)=>({id:i, text:p[1]}));
+  state = {
+    theme, total: chosenPairs.length, matched:0, mistakes:0,
+    left: shuffle(left), right: shuffle(right),
+    selectedLeft:null, selectedRight:null
+  };
+  renderMatch();
+}
+
+function renderMatch(){
+  updateProgressBar(state.matched, state.total);
+  const panel = document.getElementById('ex-panel');
+  panel.innerHTML = `
+    <div class="mascot-row">
+      <span class="owl">🦉</span>
+      <div class="bubble">Clique un mot allemand, puis sa traduction française !</div>
+    </div>
+    <div class="matchmeta">Paires trouvées : ${state.matched} / ${state.total}</div>
+    <div class="matchgrid">
+      <div class="matchcol" id="col-left"></div>
+      <div class="matchcol" id="col-right"></div>
+    </div>
+  `;
+  const colLeft = document.getElementById('col-left');
+  const colRight = document.getElementById('col-right');
+  state.left.forEach(item=>{
+    const d = document.createElement('div');
+    d.className = 'mitem';
+    d.dataset.id = item.id;
+    d.textContent = item.text;
+    if(item.matched) d.classList.add('matched');
+    d.onclick = ()=>selectItem('left', item.id, d);
+    colLeft.appendChild(d);
+  });
+  state.right.forEach(item=>{
+    const d = document.createElement('div');
+    d.className = 'mitem';
+    d.dataset.id = item.id;
+    d.textContent = item.text;
+    if(item.matched) d.classList.add('matched');
+    d.onclick = ()=>selectItem('right', item.id, d);
+    colRight.appendChild(d);
+  });
+}
+
+function selectItem(side, id, el){
+  const item = (side==='left'? state.left : state.right).find(i=>i.id===id);
+  if(item.matched) return;
+
+  if(side==='left'){
+    if(state.selectedLeftEl) state.selectedLeftEl.classList.remove('selected');
+    state.selectedLeft = id;
+    state.selectedLeftEl = el;
+    el.classList.add('selected');
+  } else {
+    if(state.selectedRightEl) state.selectedRightEl.classList.remove('selected');
+    state.selectedRight = id;
+    state.selectedRightEl = el;
+    el.classList.add('selected');
+  }
+
+  if(state.selectedLeft!==null && state.selectedRight!==null){
+    if(state.selectedLeft === state.selectedRight){
+      // match!
+      state.left.find(i=>i.id===state.selectedLeft).matched = true;
+      state.right.find(i=>i.id===state.selectedRight).matched = true;
+      state.matched++;
+      state.selectedLeftEl.classList.remove('selected');
+      state.selectedRightEl.classList.remove('selected');
+      state.selectedLeftEl.classList.add('matched');
+      state.selectedRightEl.classList.add('matched');
+      state.selectedLeft = null; state.selectedRight = null;
+      state.selectedLeftEl = null; state.selectedRightEl = null;
+      updateProgressBar(state.matched, state.total);
+      document.querySelector('.matchmeta').textContent = `Paires trouvées : ${state.matched} / ${state.total}`;
+      if(state.matched >= state.total){
+        setTimeout(showRecap, 500);
+      }
+    } else {
+      state.mistakes++;
+      const lEl = state.selectedLeftEl, rEl = state.selectedRightEl;
+      lEl.classList.add('shake'); rEl.classList.add('shake');
+      setTimeout(()=>{
+        lEl.classList.remove('shake','selected');
+        rEl.classList.remove('shake','selected');
+      }, 450);
+      state.selectedLeft = null; state.selectedRight = null;
+      state.selectedLeftEl = null; state.selectedRightEl = null;
+    }
+  }
+}
+
+/* ---------- RECAP ---------- */
+function computeStars(){
+  if(state.theme.type==='match'){
+    if(state.mistakes<=1) return 3;
+    if(state.mistakes<=4) return 2;
+    return 1;
+  } else {
+    const pct = state.correctCount / state.total;
+    if(pct>=0.9) return 3;
+    if(pct>=0.6) return 2;
+    return 1;
+  }
+}
+
+function showRecap(){
+  const stars = computeStars();
+  const theme = state.theme;
+  const prev = progress[theme.id];
+  if(!prev || stars > prev.stars){
+    progress[theme.id] = { stars };
+    saveProgress(progress);
+  }
+  const scoreLine = theme.type==='match'
+    ? `${state.total} paires trouvées, ${state.mistakes} erreur(s)`
+    : `${state.correctCount} / ${state.total} bonnes réponses`;
+
+  const panel = document.getElementById('ex-panel');
+  document.getElementById('ex-progress').style.width='100%';
+  document.getElementById('ex-counter').textContent = '';
+  panel.innerHTML = `
+    <div class="recap">
+      <div class="bigowl">${stars===3?'🦉🎉':stars===2?'🦉':'🦉💭'}</div>
+      <h3>${stars===3?'Fantastisch!':stars===2?'Gut gemacht!':'Weiter üben!'}</h3>
+      <div class="starsbig">${starString(stars)}</div>
+      <p>${scoreLine}</p>
+      <div class="actions">
+        <button class="btn yellow" onclick="openTheme('${theme.id}')">🔁 Rejouer</button>
+        <button class="btn secondary" onclick="goHome()">← Retour à l'accueil</button>
+      </div>
+    </div>
+  `;
+}
+
+/* ============================================================
+   CORRIGÉ PROTÉGÉ PAR MOT DE PASSE
+============================================================ */
+// SHA-256 du mot de passe enseignant·e (voir note à la fin du fichier pour le changer)
+const CORRIGE_HASH = 'a651fe71998943f9c0f3387238afe33d61b6cd19a27969c6b19c6f55a94771d6';
+let corrigeUnlocked = false;
+
+async function sha256Hex(text){
+  const enc = new TextEncoder().encode(text);
+  const buf = await crypto.subtle.digest('SHA-256', enc);
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+function openCorrigeGate(){
+  if(corrigeUnlocked){ showCorrige(); return; }
+  document.getElementById('pw-overlay').style.display='flex';
+  document.getElementById('pw-input').value='';
+  document.getElementById('pw-error').textContent='';
+  setTimeout(()=>document.getElementById('pw-input').focus(), 50);
+}
+function closeCorrigeGate(){
+  document.getElementById('pw-overlay').style.display='none';
+}
+async function checkPassword(){
+  const val = document.getElementById('pw-input').value;
+  const hash = await sha256Hex(val);
+  if(hash === CORRIGE_HASH){
+    corrigeUnlocked = true;
+    closeCorrigeGate();
+    showCorrige();
+  } else {
+    document.getElementById('pw-error').textContent = 'Mot de passe incorrect.';
+    const input = document.getElementById('pw-input');
+    input.style.borderColor = 'var(--red)';
+    setTimeout(()=>input.style.borderColor='', 600);
+  }
+}
+document.addEventListener('keydown', e=>{
+  if(e.key==='Enter' && document.getElementById('pw-overlay').style.display==='flex'){
+    checkPassword();
+  }
+  if(e.key==='Escape' && document.getElementById('pw-overlay').style.display==='flex'){
+    closeCorrigeGate();
+  }
+});
+
+function lockCorrige(){
+  corrigeUnlocked = false;
+  goHome();
+}
+
+function showCorrige(){
+  document.getElementById('home-view').style.display='none';
+  document.getElementById('exercise-view').style.display='none';
+  document.getElementById('corrige-view').style.display='block';
+  renderCorrigeContent();
+}
+
+function renderCorrigeContent(){
+  const container = document.getElementById('corrige-content');
+  container.innerHTML = '';
+  THEMES.forEach(theme=>{
+    const block = document.createElement('div');
+    block.className = 'corrige-block';
+    let inner = `<h4>${theme.num}. ${theme.icon} ${theme.title}</h4>`;
+    if(theme.type==='match'){
+      inner += `<div class="pairsline">`;
+      inner += theme.pairs.map(p=>`${p[0]} → <b>${p[1]}</b>`).join(' &nbsp;·&nbsp; ');
+      inner += `</div>`;
+    } else {
+      inner += theme.questions.map(q=>{
+        const ans = theme.type==='type' ? q.answer[0] : q.answer;
+        return `<div class="qa"><span class="q">${q.q}</span><span class="a">${ans}</span></div>`;
+      }).join('');
+    }
+    block.innerHTML = inner;
+    container.appendChild(block);
+  });
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+renderHome();
+</script>
+</body>
+</html>
